@@ -142,12 +142,9 @@ app.post("/login", async (req, res) => {
 
                         httpOnly: true
                     })   
-                    if (email == "admin123@gmail.com") {
-                        res.status(201).redirect("admin")
-                    }
-                    else {
+                   
                         res.status(201).redirect("secret")
-                    };
+                
                 }
                 else {
                     count+=1
@@ -184,6 +181,19 @@ app.post("/login", async (req, res) => {
 
 })
 app.get('/secret', auth, async(req, res) => {
+    if(req.user.email=="admin123@gmail.com")
+{
+    User.find({}, (err, users) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+        else {
+            res.render('admin', { users: users });
+        }
+    });
+}
+    else
     res.render("secret")
 })
 
