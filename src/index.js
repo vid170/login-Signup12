@@ -8,16 +8,13 @@ const jwt = require("jsonwebtoken")
 const fs = require("fs");
 const multer = require("multer");
 const cookieParser = require("cookie-parser")
-const flash = require('connect-flash')
-
-
 const static_path = path.join(__dirname, "../public");
 
 require("dotenv").config();
 require("./db/conn.js")
 const User = require("./models/users")
 var bodyParser = require("body-parser");
-const http = require("http");
+const http= require("http");
 // const async = require("hbs/lib/async");
 const res = require("express/lib/response");
 const port = process.env.PORT || 3000;
@@ -124,18 +121,15 @@ app.post("/register", upload.single('image'), async (req, res, next) => {
         res.status(400).send(error);
     }
 })
-
+ 
 
 flag=1;
 count=0;
 app.post("/login", async (req, res) => {
+    
     try {
-        console.log(req.cookies.jwt)
-
         if (req.cookies.jwt == undefined) {
-            if(flag==1){
-
-            
+            if(flag==1){            
             const password = req.body.password;
             const email = req.body.email;
             const useremail = await User.findOne({ email: email })
@@ -147,8 +141,7 @@ app.post("/login", async (req, res) => {
                     res.cookie("jwt", token, {
 
                         httpOnly: true
-                    })
-                
+                    })   
                     if (email == "admin123@gmail.com") {
                         res.status(201).redirect("admin")
                     }
@@ -173,32 +166,28 @@ app.post("/login", async (req, res) => {
                     res.send("invald login")
                 }
             }
-
             else {
                 res.send("More than 2 concurret logins not allowed")
             }
         }
         else{
+            
             res.send("Login blocked for 5 mins after 3 wrong passwords")
         }
     }
         else {
             res.send("You are already logged in")
         }
-
-
-
     } catch (error) {
         res.status(400).send(error);
     }
 
 })
-app.get('/secret', auth, (req, res) => {
-    console.log(`cookie: ${req.cookies.jwt}`)
+app.get('/secret', auth, async(req, res) => {
     res.render("secret")
 })
+
 app.get('/admin', auth, (req, res) => {
-    // console.log(`cookie: ${req.cookies.jwt}`)
     User.find({}, (err, users) => {
         if (err) {
             console.log(err);
@@ -210,13 +199,12 @@ app.get('/admin', auth, (req, res) => {
     });
 
 })
+
 app.get('/about', auth, (req, res) => {
-    console.log(`cookie: ${req.cookies.jwt}`)
     res.render("about", { user: req.user })
 })
 
 app.get('/logout', auth, async (req, res) => {
-    // console.log(`cookie: ${req.cookies.jwt}`)
     try {
         req.user.tokens = req.user.tokens.filter((currele) => {
             return currele.token != req.token
@@ -234,5 +222,4 @@ app.get('/logout', auth, async (req, res) => {
 
 app.listen(port, (req, res) => {
     console.log(`The application is running on port: ${port}`)
-
 });
