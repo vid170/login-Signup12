@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>@import url('https://fonts.googleapis.com/css?family=Amarante');
+
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 100%;
+          font: inherit;
+          vertical-align: baseline;
+          outline: none;
+          -webkit-font-smoothing: antialiased;
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+        html { overflow-y: scroll; }
+        body { 
+          background: #eee url('https://i.imgur.com/eeQeRmk.png'); /* https://subtlepatterns.com/weave/ */
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-size: 62.5%;
+          line-height: 1;
+          color: #585858;
+          padding: 22px 10px;
+          padding-bottom: 55px;
+        }
+        
+        ::selection { background: #5f74a0; color: #fff; }
+        ::-moz-selection { background: #5f74a0; color: #fff; }
+        ::-webkit-selection { background: #5f74a0; color: #fff; }
+        
+        br { display: block; line-height: 1.6em; } 
+        
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+        ol, ul { list-style: none; }
+        
+        input, textarea { 
+          -webkit-font-smoothing: antialiased;
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          outline: none; 
+        }
+        
+        blockquote, q { quotes: none; }
+        blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+        strong, b { font-weight: bold; } 
+        
+        table { border-collapse: collapse; border-spacing: 0; }
+        img { border: 0; max-width: 100%; }
+        
+        h1 { 
+          font-family: 'Amarante', Tahoma, sans-serif;
+          font-weight: bold;
+          font-size: 3.6em;
+          line-height: 1.7em;
+          margin-bottom: 10px;
+          text-align: center;
+        }
+        
+        
+        /** page structure **/
+        #wrapper {
+          display: block;
+          width: 1250px;
+          background: #fff;
+          margin: 0 auto;
+          padding: 10px 17px;
+          -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
+        }
+        
+        #keywords {
+          margin: 0 auto;
+          font-size: 1.2em;
+          margin-bottom: 15px;
+        }
+        
+        
+        #keywords thead {
+          cursor: pointer;
+          background: #c9dff0;
+        }
+        #keywords thead tr th { 
+          font-weight: bold;
+          padding: 12px 30px;
+          padding-left: 42px;
+        }
+        #keywords thead tr th span { 
+          padding-right: 20px;
+          background-repeat: no-repeat;
+          background-position: 100% 100%;
+        }
+        
+        #keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
+          background: #acc8dd;
+        }
+        
+        #keywords thead tr th.headerSortUp span {
+          background-image: url('https://i.imgur.com/SP99ZPJ.png');
+        }
+        #keywords thead tr th.headerSortDown span {
+          background-image: url('https://i.imgur.com/RkA9MBo.png');
+        }
+        
+        
+        #keywords tbody tr { 
+          color: #555;
+        }
+        #keywords tbody tr td {
+          text-align: center;
+          padding: 15px 10px;
+        }
+        #keywords tbody tr td.lalign {
+          text-align: left;
+          max-width: 100px;
+          max-height: 100px;
+        }</style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+       
+    <script type="text/javascript" src="script.js"></script>
+
+   
+
+  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <!-- {{!-- <a class="navbar-brand" href="#" style='color: blue'>Developer Vidhi</a> --}} -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item ">
+                <a class="nav-link active " aria-current="page" href="/admin" style='color: rgb(95, 176, 223);'>Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about" style='color: rgb(95, 176, 223);'>About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout" style='color:rgb(95, 176, 223);'>Logout</a>
+              </li>
+              
+               
+              
+            </ul>
+          
+          </div>
+        </div>
+      </nav>
+      
+
+
+    <h1> Welcome Admin</h1>
+
+        <div id="wrapper">
+         <h1>Details of all the Users</h1>
+         
+         <table id="keywords" cellspacing="0" cellpadding="0">
+           <thead>
+             <tr>
+                <th><span>Profile Photo</span></th>
+               <th><span>First Name</span></th>
+               <th><span>Last Name</span></th>
+               <th><span>Email</span></th>
+               <th><span>Date of Birth</span></th>
+               <th><span>Gender</span></th>
+               <th><span>Address</span></th>
+             </tr>
+           </thead>
+           <tbody>
+            <% users.forEach(function(user) { %>
+             <tr>
+
+                <% if(typeof user.photo.data=="undefined"){ %>
+                  <td  class="lalign"><img src="https://www.pinclipart.com/picdir/middle/541-5416602_dummy-profile-image-url-clipart.png"> </td>
+                  <% } else{ %>  
+                      <td class="lalign"><img src="data:user/<%=user.photo.contentType%>;base64,
+                <%=user.photo.data.toString('base64')%>"></td>
+                 <% } %>
+             
+               <td><%=user.first_name %></td>
+               <td><%=user.last_name %></td>
+               <td><%=user.email %></td>
+               <td><%=user.dob %></td>
+               <td><%=user.gender %></td>
+               <td><%=user.address %></td>
+             </tr>
+             <tr>
+                <% }) %>
+              
+           </tbody>
+         </table>
+
+
+
+        </div> 
+       </body>
+    
+</body>
+
+</html>
